@@ -1,0 +1,47 @@
+CREATE TABLE ProductEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    thumbnail TEXT NOT NULL,
+    category TEXT NOT NULL,
+    brand TEXT,
+    description TEXT NOT NULL,
+    rating REAL NOT NULL,
+    discountPercentage REAL NOT NULL,
+    stock INTEGER NOT NULL
+);
+
+CREATE TABLE CategoryEntity (
+    slug TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    url TEXT NOT NULL
+);
+
+insertProduct:
+INSERT OR REPLACE INTO ProductEntity(id, title, price, thumbnail, category, brand, description, rating, discountPercentage, stock)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+getAllProducts:
+SELECT * FROM ProductEntity;
+
+getProductById:
+SELECT * FROM ProductEntity WHERE id = ?;
+
+searchProducts:
+SELECT * FROM ProductEntity WHERE title LIKE ('%' || ? || '%') OR category LIKE ('%' || ? || '%');
+
+getProductsByCategory:
+SELECT * FROM ProductEntity WHERE category = ?;
+
+clearProducts:
+DELETE FROM ProductEntity;
+
+insertCategory:
+INSERT OR REPLACE INTO CategoryEntity(slug, name, url)
+VALUES (?, ?, ?);
+
+getAllCategories:
+SELECT * FROM CategoryEntity;
+
+clearCategories:
+DELETE FROM CategoryEntity;
