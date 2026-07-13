@@ -1,4 +1,4 @@
-# Revest Assignment - Product Explorer
+# Product Explorer
 
 A Kotlin Multiplatform (KMP) application that allows users to browse, search, and filter products using the DummyJSON API. This project demonstrates a shared codebase for business logic and UI across Android and iOS platforms, enhanced with offline support via local caching.
 
